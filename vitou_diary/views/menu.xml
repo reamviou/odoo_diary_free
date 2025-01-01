@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+            id="menu_vitoudiary_root"
+            name="⦁ Diary"
+            web_icon="vitou_diary/static/description/icon.png"
+             action="action_vitoudiary_diary"
+            sequence="26"/>
+
+<!--      action="action_itcontrol_approval"-->
+
+     <menuitem
+            id="menu_vitoudiary_diary"
+            name="Daily Task"
+            parent="menu_vitoudiary_root"
+            action="action_vitoudiary_diary"
+            sequence="27"/>
+      <menuitem
+            id="menu_vitoudiary_dailyreport"
+            name="Daily Report"
+            parent="menu_vitoudiary_root"
+            action="action_vitoudiary_dailyreport"
+            sequence="28"/>
+
+
+ <!--    setting-->
+
+    <menuitem
+            id="menu_vitoudiary_setting"
+            name="Setting"
+            parent="menu_vitoudiary_root"
+            sequence="50"/>
+
+     <menuitem
+            id="menu_vitoudiary_status"
+            name="Status"
+            parent="menu_vitoudiary_setting"
+            action="action_vitoudiary_status"
+            sequence="51"/>
+     <menuitem
+            id="menu_vitoudiary_priority"
+            name="Priority"
+            parent="menu_vitoudiary_setting"
+            action="action_vitoudiary_priority"
+            sequence="52"/>
+      <menuitem
+            id="menu_vitoudiary_reporttype"
+            name="Report Type"
+            parent="menu_vitoudiary_setting"
+            action="action_vitoudiary_reporttype"
+            sequence="53"/>
+
+
+
+
+</odoo>

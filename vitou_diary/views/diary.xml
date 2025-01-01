@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="view_vitoudiary_diary_list" model="ir.ui.view">
+        <field name="name">vitoudiary.diary.list</field>
+        <field name="model">vitoudiary.diary</field>
+        <field name="arch" type="xml">
+            <list string="Diary" default_order="id desc" expand="1">
+                <!--                <field name="reference"/>-->
+
+                <field name="department_id"/>
+                <field name="employee_id"/>
+                <field name="name"/>
+                <field name="type" options="{'classes': {'daily': 'primary', 'monthly': 'info','yearly':'success'}}"/>
+                <field name="date"/>
+                <field name="state" widget="label_selection"
+                       options="{'classes': {'posted': 'info', 'done': 'danger'}}"/>
+
+                <field name="job_id"/>
+
+                <field name="company_id" optional="hide"/>
+
+                <field name="diary_line_ids" optional="hide"/>
+                <field name="priority_value"/>
+
+                <!--                <field name="image" widget="image" options="{'size': [50, 50]}"/>-->
+                <field name="create_date" optional="hide"/>
+                <field name="create_uid" optional="hide"/>
+                <field name="write_date" optional="hide"/>
+                <field name="write_uid" optional="hide"/>
+                <field name="canceled_date" optional="hide"/>
+                <field name="canceled_uid" optional="hide"/>
+                <field name="done_date" optional="hide"/>
+                <field name="done_uid" optional="hide"/>
+
+                <!--                <field name="priority_value" avg="avg"/>-->
+            </list>
+
+        </field>
+    </record>
+
+    <record id="view_vitoudiary_diary_form" model="ir.ui.view">
+        <field name="name">vitoudiary.diary.form</field>
+        <field name="model">vitoudiary.diary</field>
+        <field name="arch" type="xml">
+            <form string="Diary">
+
+                <header>
+                    <button name="action_done" type="object" string="Done" class="btn-success"
+                            confirm="Are you sure to Apply Done?" invisible="state =='done'"/>
+                    <button name="action_canceled" type="object" string="Cancel" class="btn-danger"
+                            invisible="state =='posted'" confirm="Are you sure to Cancel?"
+                            groups="vitou_diary.group_vitoudiary_management,vitou_diary.group_vitoudiary_manager,vitou_diary.group_vitoudiary_administrator"/>
+
+
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="posted, done"/>
+                </header>
+
+                <sheet>
+
+                    <notebook>
+                        <page string="Post Section" name="Post_section">
+                            <group>
+                                <group>
+                                    <!--                                <field name="reference" readonly="True"/>-->
+                                    <field name="date" readonly="state !='posted'"/>
+                                    <field name="name" readonly="state !='posted'"/>
+
+                                    <field name="priority_value" invisible="1"/>
+
+
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="employee_id" invisible="1"/>
+                                        <field name="employee_name" readonly="1"/>
+                                        <field name="type" readonly="state !='posted'"/>
+                                    </group>
+                                </group>
+
+
+                            </group>
+
+
+                            <notebook>
+
+                                <page name="alldiary" string="All Dairy">
+                                    <field name="diary_line_ids" colspan="4"
+                                           string="Diary Lines"
+                                           readonly="state!='posted'"
+                                           context="{'default_date':date, 'default_employee_id':employee_id,'default_department_id':department_id,'default_job_id':job_id,'default_company_id':company_id}"
+                                    >
+                                        <list editable="bottom" delete="0">
+
+
+                                            <field name="status_id"
+                                                   required="1" readonly="state!='posted'" class="text-success"
+                                                   options="{'no_open':True,'no_create':True}"/>
+                                            <field name="priority_id"
+                                                   required="1" readonly="state!='posted'" class="text-success"
+                                                   options="{'no_open':True,'no_create':True}"/>
+
+
+                                            <field name="name"
+                                                   required="1" readonly="state!='posted'" class="text-success"/>
+                                            <field name="note" readonly="state!='posted'" class="text-success"/>
+
+                                            <field name="Assignedby_id" readonly="state!='posted'" class="text-success"
+                                                   options="{'no_open':True,'no_create':True}"/>
+                                            <field name="priority_value" readonly="True" sum="Total of Value"/>
+
+
+                                            <field name="folder" readonly="state!='posted'" class="text-success"/>
+
+                                            <button name="action_open_file_dialog" icon="fa-download" type="object"
+                                                    class="btn-primary" invisible="state!='posted' or create_uid!=uid"/>
+                                            <button name="open_file" icon="fa-share" type="object" class="btn-success"/>
+                                            <button name="open_folder" icon="fa-folder-open" type="object"
+                                                    class="btn-success"/>
+
+                                            <field name="date" readonly="True" class="text-success" optional="hide"/>
+                                            <!--                                    <field name="booking_line_visible"-->
+                                            <!--                                           optional="hide"/>-->
+
+                                            <field name="state" readonly="1" optional="hide"/>
+                                            <field name="employee_id" readonly="1" optional="hide"/>
+                                            <field name="department_id" optional="hide"/>
+
+
+                                            <!--                                             <field name="report_id" readonly="1" options="{'no_open':True, 'no_create':True}" invisible="1"/>-->
+
+
+                                            <!--                                     <button name="action_undopaid" icon="fa-undo" type="object" class="btn-danger"-->
+                                            <!--                                         invisible="state =='posted' or state=='check_out'" confirm="Undo Paid?"/>-->
+
+
+                                            <button name="unlink" icon="fa-trash" type="object" class="btn-danger"
+                                                    invisible="state!='posted' or create_uid!=uid"
+                                                    confirm="Delete?"/>
+                                            <field name="create_uid" optional="hide"/>
+                                        </list>
+                                    </field>
+
+<!--                                    <div class="oe_clear"/>-->
+                                </page>
+                            </notebook>
+
+
+                        </page>
+
+                        <page string="Information" name="Info_section">
+                            <group>
+                                <group>
+
+                                    <field name="department_id" readonly="True"/>
+                                    <field name="job_id" readonly="True"/>
+                                    <!--                                         <field name="employee_name" readonly="True"/>-->
+
+                                </group>
+                                <group>
+                                    <field name="company_id" readonly="True"/>
+
+                                    <field name="employee_name" invisible="0"/>
+
+
+                                </group>
+                            </group>
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+                <!--                <div class="oe_chatter">-->
+                <!--                    <field name="message_follower_ids" groups="base.group_user"/>-->
+                <!--                    <field name="message_ids"/>-->
+
+                <!--                </div>-->
+            </form>
+
+        </field>
+    </record>
+
+    <record id="view_vitoudiary_diary_graph" model="ir.ui.view">
+        <field name="name">vitoudiary.diary.graph</field>
+        <field name="model">vitoudiary.diary</field>
+        <field name="type">graph</field>
+        <field name="arch" type="xml">
+            <graph string="Daily Task" type="bar">
+                <field name="employee_id"/>
+                <field name="priority_value" type="measure"/>
+
+                <!--            <field name="employee_name" type="measure"/>-->
+                <!--                 <field name="priority_value" operator="average" />-->
+                <!--           <field name="employee_name" groups="True"/>-->
+                <!--            <field name="date" interval="day" groups="True"/>-->
+
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_vitoudiary_diary_search" model="ir.ui.view">
+
+        <field name="name">vitoudiary.diary.search</field>
+        <field name="model">vitoudiary.diary</field>
+
+        <field name="arch" type="xml">
+
+            <search position="inside">
+
+                <field name="name"/>
+                <field name="date"/>
+                <field name="state"/>
+                <field name="employee_id"/>
+
+                <filter name="filter_state_post" string="Posted" domain="[('state','=','posted')]"/>
+
+                <filter name="filter_groupby_name" string="Group Name" context="{'group_by':'employee_id'}"/>
+
+                <group expand="1" string="Group By Link">
+                    <filter name="filter_group_day_dept" string="Group by Day" domain="[('date','=',current_date)]"
+                            context="{'group_by': 'date:day', 'expand': 1}"/>
+                    <filter name="filter_group_day_emp" string="Employee"
+                            context="{'group_by': 'employee_id', 'expand': 1}"/>
+                </group>
+
+                <filter name="filter_today" string="Today" domain="[('date','=',current_date)]"/>
+
+                <searchpanel>
+                    <!--                        <field name="company_id" groups="base.group_multi_company" icon="fa-building" enable_counters="1"/>-->
+
+                    <field name="company_id" icon="fa-university" enable_counters="1"/>
+                    <field name="department_id" icon="fa-sitemap" enable_counters="1"/>
+                    <!--                    <field name="employee_id" icon="fa-users" enable_counters="1"/>-->
+                    <!--                    <field name="priority_id" icon="fa-users" enable_counters="1"/>-->
+                    <!--                    <field name="status_id" icon="fa fa-filter" enable_counters="1"/>-->
+                </searchpanel>
+
+
+                <!--                <filter name="filter_state_stockconfirmed" string="Stockconfirmed" domain="[('state','=','stockconfirmed')]"/>-->
+
+            </search>
+
+        </field>
+    </record>
+
+
+    <record id="action_vitoudiary_diary" model="ir.actions.act_window">
+        <field name="name">Diary</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vitoudiary.diary</field>
+        <field name="view_mode">list,form,graph</field>
+        <field name="context">
+            {'search_default_filter_today':1}
+
+            <!--            {'search_default_filter_group_day_dept':1,'search_default_filter_group_day_emp':1,'search_default_filter_today':1}-->
+        </field>
+        <!--        <field name="search_view_id" ref="view_vitoudiary_diary_search"/>-->
+    </record>
+
+
+</odoo>
