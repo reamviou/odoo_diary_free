@@ -38,6 +38,7 @@ Long description of module's purpose
         'demo/demo.xml',
     ],
 
+    'images': ['static/description/banner.png'],
     "installable": True,
     "application": True,
     'license': 'LGPL-3',
