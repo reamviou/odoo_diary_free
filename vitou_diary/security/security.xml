@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="0">
+    <record id="vitou_diary.module_category_vitoudiary" model="ir.module.category">
+        <field name="name">Diary</field>
+        <field name="sequence">60</field>
+    </record>
+
+     <record id="group_vitoudiary_staff" model="res.groups">
+        <field name="name">Staff</field>
+        <field name="category_id" ref="vitou_diary.module_category_vitoudiary"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">Staff</field>
+    </record>
+
+     <record id="group_vitoudiary_manager" model="res.groups">
+        <field name="name">Department Manager</field>
+        <field name="category_id" ref="vitou_diary.module_category_vitoudiary"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">Department Manager</field>
+    </record>
+
+    <record id="group_vitoudiary_management" model="res.groups">
+        <field name="name">Management</field>
+        <field name="category_id" ref="vitou_diary.module_category_vitoudiary"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">Management</field>
+    </record>
+
+
+
+      <record id="group_vitoudiary_administrator" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="category_id" ref="vitou_diary.module_category_vitoudiary"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">Administrator</field>
+    </record>
+
+<!--    daily task-->
+     <record id="vitoudiary_diary_staff_rule" model="ir.rule">
+            <field name="name">Diary: all staff</field>
+            <field name="model_id" ref="model_vitoudiary_diary"/>
+            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="groups" eval="[Command.link(ref('group_vitoudiary_staff'))]"/>
+    </record>
+
+     <record id="vitoudiary_diary_administrator_rule" model="ir.rule">
+            <field name="name">Diary: administrator</field>
+            <field name="model_id" ref="model_vitoudiary_diary"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[Command.link(ref('group_vitoudiary_administrator'))]"/>
+    </record>
+
+    <!--     <field name="domain_force">[('vehicle_id.driver_id','=',user.partner_id.id)]</field>-->
+     <record id="vitoudiary_diary_manager_rule" model="ir.rule">
+            <field name="name">Diary: Department Manager</field>
+            <field name="model_id" ref="model_vitoudiary_diary"/>
+         <field name="domain_force">[('department_id', '=', user.department_id.id)]</field>
+<!--            <field name="domain_force">[('employee_id', '=', '[hr.employee.id]')]</field>-->
+            <field name="groups" eval="[Command.link(ref('group_vitoudiary_manager'))]"/>
+    </record>
+
+     <record id="vitoudiary_diary_management_rule" model="ir.rule">
+            <field name="name">Diary: Managment</field>
+            <field name="model_id" ref="model_vitoudiary_diary"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[Command.link(ref('group_vitoudiary_management'))]"/>
+    </record>
+
+    <!--    report-->
+
+     <record id="vitoudiary_report_access_right_staff" model="ir.rule">
+            <field name="name">Diary: all staff</field>
+            <field name="model_id" ref="model_vitoudiary_dailyreport"/>
+            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="groups" eval="[Command.link(ref('group_vitoudiary_staff'))]"/>
+    </record>
+     <record id="vitoudiary_report_access_right_administrator" model="ir.rule">
+            <field name="name">Diary Daily Report: administrator</field>
+            <field name="model_id" ref="model_vitoudiary_dailyreport"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[Command.link(ref('group_vitoudiary_administrator'))]"/>
+    </record>
+
+    <!--     <field name="domain_force">[('vehicle_id.driver_id','=',user.partner_id.id)]</field>-->
+     <record id="vitoudiary_report_access_right_manager" model="ir.rule">
+            <field name="name">Diary Daily Report: Department Manager</field>
+            <field name="model_id" ref="model_vitoudiary_dailyreport"/>
+         <field name="domain_force">[('department_id', '=', user.department_id.id)]</field>
+<!--            <field name="domain_force">[('employee_id', '=', '[hr.employee.id]')]</field>-->
+            <field name="groups" eval="[Command.link(ref('group_vitoudiary_manager'))]"/>
+    </record>
+
+     <record id="vitoudiary_report_access_right_management" model="ir.rule">
+            <field name="name">Diary Daily Report: Managment</field>
+            <field name="model_id" ref="model_vitoudiary_dailyreport"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[Command.link(ref('group_vitoudiary_management'))]"/>
+    </record>
+
+
+</odoo>
+

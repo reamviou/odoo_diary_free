@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+vitou_diary.access_vitoudiary_diary,access_vitoudiary_diary,vitou_diary.model_vitoudiary_diary,base.group_user,1,1,1,1
+vitou_diary.access_vitoudiary_status,access_vitoudiary_status,vitou_diary.model_vitoudiary_status,base.group_user,1,1,1,1
+vitou_diary.access_vitoudiary_priority,access_vitoudiary_priority,vitou_diary.model_vitoudiary_priority,base.group_user,1,1,1,1
+vitou_diary.access_vitoudiary_func,access_vitoudiary_func,vitou_diary.model_vitoudiary_func,base.group_user,1,1,1,1
+vitou_diary.access_vitoudiary_reporttype,access_vitoudiary_reporttype,vitou_diary.model_vitoudiary_reporttype,base.group_user,1,1,1,1
+vitou_diary.access_vitoudiary_dailyreport,access_vitoudiary_dailyreport,vitou_diary.model_vitoudiary_dailyreport,base.group_user,1,1,1,1
+vitou_diary.access_vitoudiary_dailyreportline,access_vitoudiary_dailyreportline,vitou_diary.model_vitoudiary_dailyreportline,base.group_user,1,1,1,1
+vitou_diary.access_vitoudiary_diaryline,access_vitoudiary_diaryline,vitou_diary.model_vitoudiary_diaryline,base.group_user,1,1,1,1
+
+
+
+
+
