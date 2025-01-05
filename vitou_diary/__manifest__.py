@@ -32,7 +32,7 @@
         'demo/demo.xml',
     ],
 
-    'images': ['static/description/banner.gif'],
+    'images': ['static/description/banner.png'],
     "installable": True,
     "application": True,
     "auto_install": False,
