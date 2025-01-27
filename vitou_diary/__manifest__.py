@@ -3,7 +3,7 @@
     'name': "Diary",
     'author': 'REAM Vitou',
     'website': 'https://odoocambodia.com',
-    'maintainer': 'REAM Vitou',
+    'maintainer': 'Vitou Technology',
     'version': '18.0.0.1',
     'category': 'Human Resources',
     'sequence': 75,
