@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Diary",
-    'summary': "This module is diary for odoo17",
+    'summary': "Staff diary is for recording ever staff by themself for daily tasks and activity",
     'description': """
-Long description of module's purpose
+        This module is for daily staff diary.
     """,
     'module_type': 'official',
-    'author': "Mr. REAM Vitou, Tel: (+855) 17 82 66 82",
+    'maintainer': 'Vitou Technology',
+    'author': "Vitou Technology",
+    'version': '17.0.1.0',
     'website': "https://www.odoocambodia.com",
     'depends': [
         #'base',
@@ -18,7 +20,7 @@ Long description of module's purpose
     ],
     'category': 'Human Resources',
     # any module necessary for this one to work correctly
-    'version': '17.0.1.0',
+
     # always loaded
     'data': [
         'security/security.xml',
