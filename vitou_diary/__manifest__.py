@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Diary",
-    'author': 'REAM Vitou',
+    'author': 'Vitou Technologies',
     'website': 'https://odoocambodia.com',
-    'maintainer': 'Vitou Technology',
+    'maintainer': 'Vitou Technologies',
     'version': '18.0.0.1',
     'category': 'Human Resources',
     'sequence': 75,
