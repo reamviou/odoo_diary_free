@@ -6,8 +6,8 @@
         This module is for daily staff diary.
     """,
     'module_type': 'official',
-    'maintainer': 'Vitou Technology',
-    'author': "Vitou Technology",
+    'maintainer': 'Vitou Technologies',
+    'author': "Vitou Technologies",
     'version': '17.0.1.0',
     'website': "https://www.odoocambodia.com",
     'depends': [
