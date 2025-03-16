@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Diary",
-    'author': 'Vitou Technologies',
+    'author': 'V Technologies',
     'website': 'https://odoocambodia.com',
-    'maintainer': 'Vitou Technologies',
+    'maintainer': 'V Technologies',
     'version': '18.0.0.1',
     'category': 'Human Resources',
     'sequence': 75,
