@@ -6,17 +6,7 @@
 #    Author: REAM Vitou (reamvitou@yahoo.com)
 #    Tel: +855 17 82 66 82
 
-#    GENERAL PUBLIC LICENSE (LGPL v3), Version 3.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU LESSER GENERAL PUBLIC LICENSE (LGPL v3) for more details.
-#
-#    You should have received a copy of the GNU LESSER GENERAL PUBLIC LICENSE
-#    (LGPL v3) along with this program.
-#    If not, see <http://www.gnu.org/licenses/>.
-#
+
 ###############################################################################
 import datetime
 
@@ -35,7 +25,7 @@ class VitouDiaryTask(models.Model):
 
 
      # reference = fields.Char(string="Reference", default='New')
-     name = fields.Text(string="Title", required =True, tracking=True)
+     name = fields.Text(string="Title", required =True)
      date = fields.Date(string="Date", default =  fields.Date.today())
      #image = fields.Image(string="Image", help="Select image here", max_width=200, max_height=200)
 
@@ -50,7 +40,7 @@ class VitouDiaryTask(models.Model):
           selection=[
                ('posted', 'Posted'),
                ('done', 'Done'),
-          ], default="posted", required=True, tracking=True
+          ], default="posted", required=True
      )
      type= fields.Selection(
           string="Type",
@@ -63,7 +53,7 @@ class VitouDiaryTask(models.Model):
      )
 
      status_id = fields.Many2one(comodel_name="vitoudiary.status", string="Status", store=True)
-     priority_id = fields.Many2one(comodel_name="vitoudiary.priority", string="Priority", store=True , tracking=True)
+     priority_id = fields.Many2one(comodel_name="vitoudiary.priority", string="Priority", store=True )
      priority_value = fields.Float(related='priority_id.value', string="Priority Value", store=True)
      Assignedby_id = fields.Many2one(comodel_name="hr.employee", string="Assinged By", store=True) #fields.Char(string="Assigned By")
 
