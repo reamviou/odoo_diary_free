@@ -9,7 +9,7 @@
     'maintainer': 'V Technologies',
     'author': "V Technologies",
     'version': '17.0.1.0',
-    'website': "https://www.odoocambodia.com",
+    'website': 'https://apps.odoo.com/apps/modules/browse?search=vitou',
     'depends': [
         #'base',
         'base_setup',
