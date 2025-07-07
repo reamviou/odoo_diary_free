@@ -2,7 +2,7 @@
 {
     'name': "Diary",
     'author': 'V Technologies',
-    'website': 'https://odoocambodia.com',
+    'website': 'https://apps.odoo.com/apps/modules/browse?search=vitou',
     'maintainer': 'V Technologies',
     'version': '18.0.0.1',
     'category': 'Human Resources',
